@@ -7,7 +7,7 @@ const AddTodo = ({ addTodoFunc }) => {
 		setTitle('')
 	}
 	return (
-		<div className='flex justify-center my-10'>
+		<div className='flex justify-center py-10'>
 			<input 
 				className='border-red-500'
 				value={title}

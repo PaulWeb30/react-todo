@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddTodo, TodoList } from './components/index'
-import { fetchTodos, addTodo, deleteTodo, setTodos } from './redux/actions'
+import { AddTodo, TodoList, Categories } from './components/index'
+import { fetchTodos, addTodo, deleteTodo, setTodos } from './redux/actions/items'
 function App() {
 	const dispatch = useDispatch()
-	const items = useSelector(state => state.items)
+	const items = useSelector(state => state.items.items)
 	React.useEffect(() => {
 		dispatch(fetchTodos())
 	}, [])
@@ -25,8 +25,9 @@ function App() {
 		dispatch(setTodos(items))
 	})
 	return (
-		<div className='w-full mx-auto flex justify-center flex-col'>
+		<div className='min-h-screen bg-gray-900 text-white mx-auto'>
 			<AddTodo addTodoFunc={addTodoFunc} />
+			<Categories />
 			<TodoList
 				deleteTodoFunc={deleteTodoFunc}
 				setTodoCompleted={setTodoCompleted}

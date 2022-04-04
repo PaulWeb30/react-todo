@@ -12,13 +12,9 @@ export const deleteTodo = payload => ({
 	type: 'DELETE_TODO', payload
 })
 
-// export const setCompleted = payload => ({
-// 	type: 'SET_COMPLETED',
-// 	payload,
-// })
 export const fetchTodos = () => dispatch => {
 		axios
-			.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+			.get('https://jsonplaceholder.typicode.com/todos?_limit=20')
 			.then(({ data }) => {
 				dispatch(setTodos(data))
 			})
