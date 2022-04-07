@@ -4,7 +4,7 @@ import { AddTodo, TodoList, Categories } from './components/index'
 import { fetchTodos, addTodo, deleteTodo, setTodos } from './redux/actions/items'
 function App() {
 	const dispatch = useDispatch()
-	const items = useSelector(state => state.items.items)
+	const {items} = useSelector(state => state.items)
 	React.useEffect(() => {
 		dispatch(fetchTodos())
 	}, [])
@@ -27,7 +27,7 @@ function App() {
 	return (
 		<div className='min-h-screen bg-gray-900 text-white mx-auto'>
 			<AddTodo addTodoFunc={addTodoFunc} />
-			<Categories />
+			{/* <Categories /> */}
 			<TodoList
 				deleteTodoFunc={deleteTodoFunc}
 				setTodoCompleted={setTodoCompleted}
