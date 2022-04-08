@@ -1,4 +1,4 @@
-export const setCategories = payload => ({
+export const setCategory = payload => ({
 	type: 'SET_CATEGORY',
 	payload
 })

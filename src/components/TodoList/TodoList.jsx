@@ -5,7 +5,7 @@ const TodoList = ({ deleteTodoFunc, setTodoCompleted }) => {
 	const { items } = useSelector(state => state.items)
 	return (
 		<div className='max-w-7xl mx-auto my-0 flex flex-col gap-4'>
-			{items && items.length > 0 ? (
+			{items.length > 0 ? (
 				items.map(t => (
 					<div
 						key={t.id + t.title}
@@ -25,6 +25,7 @@ const TodoList = ({ deleteTodoFunc, setTodoCompleted }) => {
 						<button
 							className='text-md ml-6'
 							onClick={() => deleteTodoFunc(t.id)}
+							onSubmit={(e) => e.preventDefault()}
 						>
 							deleteTodo
 						</button>

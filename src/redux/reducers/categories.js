@@ -1,5 +1,5 @@
 const initialValue = {
-	category: 'all'
+	category: 'all',
 }
 
 const items = (state = initialValue, action) => {
@@ -7,7 +7,7 @@ const items = (state = initialValue, action) => {
 		case 'SET_CATEGORY':
 			return {
 				...state,
-				category: action.payload
+				category: action.payload,
 			}
 		default:
 			return state

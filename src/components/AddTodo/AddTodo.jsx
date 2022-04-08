@@ -6,6 +6,8 @@ const AddTodo = ({ addTodoFunc }) => {
 		if (title.trimStart().length > 0) {
 			addTodoFunc(title)
 			setTitle('')
+		} else {
+			setTitle('')
 		}
 	}
 	return (

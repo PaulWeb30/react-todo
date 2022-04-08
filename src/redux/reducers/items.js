@@ -1,5 +1,6 @@
 const initialValue = {
 	items: [],
+	isLoading: false,
 }
 
 const items = (state = initialValue, action) => {
@@ -7,7 +8,7 @@ const items = (state = initialValue, action) => {
 		case 'ADD_TODO':
 			return {
 				...state,
-				items: [action.payload, ...state.items],
+				items: [...state.items, action.payload],
 			}
 		case 'DELETE_TODO':
 			return {
@@ -18,6 +19,12 @@ const items = (state = initialValue, action) => {
 			return {
 				...state,
 				items: [...action.payload],
+				isLoading: false,
+			}
+		case 'SET_LOADING':
+			return {
+				...state,
+				isLoading: action.payload,
 			}
 		default:
 			return state

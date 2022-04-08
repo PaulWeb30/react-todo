@@ -1,37 +1,69 @@
 import React from 'react'
+import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddTodo, TodoList, Categories } from './components/index'
-import { fetchTodos, addTodo, deleteTodo, setTodos } from './redux/actions/items'
+import { AddTodo, TodoList, Categories, Loader } from './components/index'
+import {
+	fetchTodos,
+	addTodo,
+	deleteTodo,
+	setTodos,
+} from './redux/actions/items'
 function App() {
 	const dispatch = useDispatch()
-	const {items} = useSelector(state => state.items)
+	const { items } = useSelector(state => state.items)
+	const { category } = useSelector(state => state.categories)
+	const { isLoading } = useSelector(state => state.items)
 	React.useEffect(() => {
-		dispatch(fetchTodos())
+		dispatch(fetchTodos(category))
 	}, [])
 	const addTodoFunc = React.useCallback(title => {
 		const todo = {
-			id: Date.now(),
+			userId: Date.now(),
+			id: Math.random().toString(16).slice(-4),
 			title,
+			completed: false,
 		}
+		axios({
+			method: 'post',
+			url: 'http://localhost:3001/todos',
+			data: {
+				userId: Date.now(),
+				id: Math.random().toString(16).slice(-4),
+				title,
+				completed: false,
+			},
+		})
 		dispatch(addTodo(todo))
 	})
 	const deleteTodoFunc = React.useCallback(id => {
+		axios.delete(`http://localhost:3001/todos/${id}`)
 		dispatch(deleteTodo(id))
 	})
 	const setTodoCompleted = React.useCallback(id => {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
-		items.splice(id - 1, 1, item)
+		// axios({
+		// 	method: 'put',
+		// 	url: `http://localhost:3001/todos/${id}`,
+		// 	data: {
+		// 		...item,
+		// 		completed: !item.completed,
+		// 	},
+		// })
 		dispatch(setTodos(items))
 	})
 	return (
 		<div className='min-h-screen bg-gray-900 text-white mx-auto'>
 			<AddTodo addTodoFunc={addTodoFunc} />
-			{/* <Categories /> */}
-			<TodoList
-				deleteTodoFunc={deleteTodoFunc}
-				setTodoCompleted={setTodoCompleted}
-			/>
+			<Categories />
+			{isLoading ? (
+				<Loader />
+			) : (
+				<TodoList
+					deleteTodoFunc={deleteTodoFunc}
+					setTodoCompleted={setTodoCompleted}
+				/>
+			)}
 		</div>
 	)
 }

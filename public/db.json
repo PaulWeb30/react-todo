@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "userId": 1649436856927,
+      "id": "ed88",
+      "title": "Take pigules",
+      "completed": true
+    },
+    {
+      "userId": 1649436893994,
+      "id": "b25a",
+      "title": "Make dinner",
+      "completed": true
+    },
+    {
+      "userId": 1649437384222,
+      "id": "75aa",
+      "title": "Do homework",
+      "completed": true
+    },
+    {
+      "userId": 1649437827253,
+      "id": "cf63",
+      "title": "Take a box from post office",
+      "completed": false
+    },
+    {
+      "userId": 1649440232396,
+      "id": "3afa",
+      "title": "8",
+      "completed": false
+    }
+  ]
+}
