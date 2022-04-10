@@ -17,7 +17,15 @@ const AddTodo = () => {
 					title,
 					completed: false,
 				},
-			}).then(todo => dispatch(addTodo(todo)))
+			})
+			dispatch(
+				addTodo({
+					userId: Date.now(),
+					id: Math.random().toString(16).slice(-4),
+					title,
+					completed: false,
+				})
+			)
 			setTitle('')
 		} else {
 			setTitle('')
