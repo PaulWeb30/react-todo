@@ -14,27 +14,9 @@ function App() {
 	const { category } = useSelector(state => state.categories)
 	const { isLoading } = useSelector(state => state.items)
 	React.useEffect(() => {
-		dispatch(fetchTodos(category))
+		dispatch(fetchTodos())
 	}, [])
-	const addTodoFunc = React.useCallback(title => {
-		const todo = {
-			userId: Date.now(),
-			id: Math.random().toString(16).slice(-4),
-			title,
-			completed: false,
-		}
-		axios({
-			method: 'post',
-			url: 'http://localhost:3001/todos',
-			data: {
-				userId: Date.now(),
-				id: Math.random().toString(16).slice(-4),
-				title,
-				completed: false,
-			},
-		})
-		dispatch(addTodo(todo))
-	})
+
 	const deleteTodoFunc = React.useCallback(id => {
 		axios.delete(`http://localhost:3001/todos/${id}`)
 		dispatch(deleteTodo(id))
@@ -54,7 +36,7 @@ function App() {
 	})
 	return (
 		<div className='min-h-screen bg-gray-900 text-white mx-auto'>
-			<AddTodo addTodoFunc={addTodoFunc} />
+			<AddTodo />
 			<Categories />
 			{isLoading ? (
 				<Loader />
