@@ -25,7 +25,7 @@ function App() {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
 		axios({
-			method: 'post',
+			method: 'patch',
 			url: `http://localhost:3001/todos/${id}`,
 			data: {
 				...item,
