@@ -17,23 +17,23 @@ function App() {
 		dispatch(fetchTodos())
 	}, [])
 
-	const deleteTodoFunc = React.useCallback(id => {
+	const deleteTodoFunc = id => {
 		axios.delete(`http://localhost:3001/todos/${id}`)
 		dispatch(deleteTodo(id))
-	})
-	const setTodoCompleted = React.useCallback(id => {
+	}
+	const setTodoCompleted = id => {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
-		// axios({
-		// 	method: 'put',
-		// 	url: `http://localhost:3001/todos/${id}`,
-		// 	data: {
-		// 		...item,
-		// 		completed: !item.completed,
-		// 	},
-		// })
+		axios({
+			method: 'post',
+			url: `http://localhost:3001/todos/${id}`,
+			data: {
+				...item,
+				completed: !item.completed,
+			},
+		})
 		dispatch(setTodos(items))
-	})
+	}
 		const addTodoFunc = title => {
 			axios({
 				method: 'post',
