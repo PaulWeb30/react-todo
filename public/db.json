@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "userId": 1649437827253,
-      "id": "cf63",
-      "title": "Take a box from post office",
-      "completed": false
-    },
-    {
       "userId": 1649583780543,
       "id": "bb4b",
       "title": "ttt",
@@ -25,27 +19,9 @@
       "completed": false
     },
     {
-      "userId": 1649586661171,
-      "id": "9cec",
-      "title": "н",
-      "completed": false
-    },
-    {
-      "userId": 1649586941906,
-      "id": "fb89",
-      "title": "f",
-      "completed": false
-    },
-    {
-      "userId": 1649586947898,
-      "id": "df47",
-      "title": "f",
-      "completed": false
-    },
-    {
-      "userId": 1649586955874,
-      "id": "d3fc",
-      "title": "h",
+      "userId": 1649587224897,
+      "id": "46fd",
+      "title": "е",
       "completed": false
     }
   ]

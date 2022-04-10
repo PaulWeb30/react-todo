@@ -34,9 +34,30 @@ function App() {
 		// })
 		dispatch(setTodos(items))
 	})
+		const addTodoFunc = title => {
+			axios({
+				method: 'post',
+				url: 'http://localhost:3001/todos',
+				data: {
+					userId: Date.now(),
+					id: Math.random().toString(16).slice(-4),
+					title,
+					completed: false,
+				},
+			})
+			dispatch(
+				addTodo({
+					userId: Date.now(),
+					id: Math.random().toString(16).slice(-4),
+					title,
+					completed: false,
+				})
+			)
+		}
+	
 	return (
 		<div className='min-h-screen bg-gray-900 text-white mx-auto'>
-			<AddTodo />
+			<AddTodo addTodoFunc={addTodoFunc} />
 			<Categories />
 			{isLoading ? (
 				<Loader />

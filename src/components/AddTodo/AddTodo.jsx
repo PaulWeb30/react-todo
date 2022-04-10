@@ -1,31 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import axios from 'axios'
-import { addTodo } from '../../redux/actions/items'
-const AddTodo = () => {
+const AddTodo = ({addTodoFunc}) => {
 	const [title, setTitle] = useState('')
-	const dispatch = useDispatch()
 	const handleClick = e => {
 		e.preventDefault()
 		if (title.trimStart().length > 0) {
-			axios({
-				method: 'post',
-				url: 'http://localhost:3001/todos',
-				data: {
-					userId: Date.now(),
-					id: Math.random().toString(16).slice(-4),
-					title,
-					completed: false,
-				},
-			})
-			dispatch(
-				addTodo({
-					userId: Date.now(),
-					id: Math.random().toString(16).slice(-4),
-					title,
-					completed: false,
-				})
-			)
+			addTodoFunc(title)
 			setTitle('')
 		} else {
 			setTitle('')
