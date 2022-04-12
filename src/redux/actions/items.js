@@ -24,6 +24,8 @@ export const fetchTodos = category => dispatch => {
 				? 'http://localhost:3001/todos'
 				: category === 'completed'
 				? 'http://localhost:3001/todos?completed=true'
+				: category === 'uncompleted'
+				? 'http://localhost:3001/todos?completed=false'
 				: 'http://localhost:3001/todos'
 		)
 		.then(({ data }) => {

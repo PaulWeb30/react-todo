@@ -14,8 +14,8 @@ function App() {
 	const { category } = useSelector(state => state.categories)
 	const { isLoading } = useSelector(state => state.items)
 	React.useEffect(() => {
-		dispatch(fetchTodos())
-	}, [])
+		dispatch(fetchTodos(category))
+	}, [category])
 
 	const deleteTodoFunc = id => {
 		axios.delete(`http://localhost:3001/todos/${id}`)
