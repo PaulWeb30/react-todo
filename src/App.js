@@ -17,11 +17,11 @@ function App() {
 		dispatch(fetchTodos(category))
 	}, [category])
 
-	const deleteTodoFunc = id => {
+	const deleteTodoFunc = React.useCallback((id) => {
 		axios.delete(`http://localhost:3001/todos/${id}`)
 		dispatch(deleteTodo(id))
-	}
-	const setTodoCompleted = id => {
+	},[])
+	const setTodoCompleted = React.useCallback((id) => {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
 		const data = {
@@ -30,8 +30,8 @@ function App() {
 		}
 		axios.patch(`http://localhost:3001/todos/${id}`, data)
 		dispatch(setTodos(items))
-	}
-	const addTodoFunc = title => {
+	},[])
+	const addTodoFunc = React.useCallback((title) => {
 		axios({
 			method: 'post',
 			url: 'http://localhost:3001/todos',
@@ -50,7 +50,7 @@ function App() {
 				completed: false,
 			})
 		)
-	}
+	},[])
 
 	return (
 		<div className='min-h-screen bg-gray-900 text-white mx-auto'>

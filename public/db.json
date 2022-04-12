@@ -4,18 +4,12 @@
       "userId": 1649763615347,
       "id": "7347",
       "title": "do homework",
-      "completed": true
+      "completed": false
     },
     {
       "userId": 1649763645426,
       "id": "2dc5",
       "title": "Wake up at 8",
-      "completed": true
-    },
-    {
-      "userId": 1649763655306,
-      "id": "f424",
-      "title": "do english exam",
       "completed": false
     },
     {
@@ -28,12 +22,6 @@
       "userId": 1649763844227,
       "id": "60ad",
       "title": "Wash dish",
-      "completed": false
-    },
-    {
-      "userId": 1649795423420,
-      "id": "94e8",
-      "title": "8",
       "completed": true
     }
   ]
