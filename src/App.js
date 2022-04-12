@@ -24,11 +24,7 @@ function App() {
 	const setTodoCompleted = id => {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
-		const data = {
-			...item,
-			completed: item.completed,
-		}
-		axios.patch(`https://61f80652783c1d0017c4455d.mockapi.io/items/${id}`, data)
+		axios.post('https://61f80652783c1d0017c4455d.mockapi.io/items', items)
 		dispatch(setTodos(items))
 	}
 	const addTodoFunc = title => {
