@@ -21,12 +21,12 @@ export const fetchTodos = category => dispatch => {
 	axios
 		.get(
 			category === 'all'
-				? 'https://61f80652783c1d0017c4455d.mockapi.io/items'
+				? 'http://localhost:3001/todos'
 				: category === 'completed'
-				? 'https://61f80652783c1d0017c4455d.mockapi.io/items?completed=true'
+				? 'http://localhost:3001/todos?completed=true'
 				: category === 'uncompleted'
-				? 'https://61f80652783c1d0017c4455d.mockapi.io/items?completed=false'
-				: 'https://61f80652783c1d0017c4455d.mockapi.io/items'
+				? 'http://localhost:3001/todos?completed=false'
+				: 'http://localhost:3001/todos'
 		)
 		.then(({ data }) => {
 			dispatch(setTodos(data))

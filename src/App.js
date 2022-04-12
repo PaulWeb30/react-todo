@@ -18,19 +18,23 @@ function App() {
 	}, [category])
 
 	const deleteTodoFunc = id => {
-		axios.delete(`https://61f80652783c1d0017c4455d.mockapi.io/items/${id}`)
+		axios.delete(`http://localhost:3001/todos/${id}`)
 		dispatch(deleteTodo(id))
 	}
 	const setTodoCompleted = id => {
 		const item = items.find(t => t.id === id)
 		item.completed = !item.completed
-		axios.post('https://61f80652783c1d0017c4455d.mockapi.io/items', items)
+		const data = {
+			...item,
+			completed: item.completed,
+		}
+		axios.patch(`http://localhost:3001/todos/${id}`, data)
 		dispatch(setTodos(items))
 	}
 	const addTodoFunc = title => {
 		axios({
 			method: 'post',
-			url: 'https://61f80652783c1d0017c4455d.mockapi.io/items',
+			url: 'http://localhost:3001/todos',
 			data: {
 				userId: Date.now(),
 				id: Math.random().toString(16).slice(-4),
